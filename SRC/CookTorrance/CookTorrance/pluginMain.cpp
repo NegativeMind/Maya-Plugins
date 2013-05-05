@@ -1,31 +1,33 @@
-
 #include "CookTorranceNode.h"
 
 #include <maya/MFnPlugin.h>
 
-MStatus initializePlugin( MObject obj )
 
-{ 
-	//‚±‚Ìƒm[ƒh‚Ì‘®«
-	const MString UserClassify("shader/surface"); 
+/**
+ * ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®åˆæœŸåŒ–
+ **/
+MStatus initializePlugin(MObject obj){
+	
+	const MString UserClassify("shader/surface");//ï¿½ï¿½ï¿½Ìƒmï¿½[ï¿½hï¿½Ì‘ï¿½ï¿½ï¿½
+
+	MFnPlugin plugin( obj,  PLUGIN_COMPANY, "4.5", "Any");//ï¿½ï¿½ï¿½ì‚·ï¿½ï¿½Mayaï¿½Ìƒoï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
-	//“®ì‚·‚éMaya‚Ìƒo[ƒWƒ‡ƒ““™
-	MFnPlugin plugin( obj,  PLUGIN_COMPANY, "4.5", "Any");
-
-//MStatus‚ğ•Ô‚·ŠÖ”‚ğCHECK_MSTATUSŠÖ”‚É“ü‚ê‚ÄƒGƒ‰[‚ª‚È‚¢‚±‚Æ‚ğ•ÛØ‚·‚é
-CHECK_MSTATUS(plugin.registerNode( "CookTorranceNode", CookTorranceNode::id,
-									CookTorranceNode::creator,
-									CookTorranceNode::initialize,
-									MPxNode::kDependNode,
-									&UserClassify ));
+	//MStatusï¿½ï¿½ï¿½Ô‚ï¿½ï¿½Öï¿½ï¿½ï¿½CHECK_MSTATUSï¿½Öï¿½ï¿½É“ï¿½ï¿½ï¿½ï¿½ÄƒGï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ÛØ‚ï¿½ï¿½ï¿½
+	CHECK_MSTATUS(plugin.registerNode( "CookTorranceNode", CookTorranceNode::id,
+								CookTorranceNode::creator,
+								CookTorranceNode::initialize,
+								MPxNode::kDependNode,
+								&UserClassify ));
 
 	return MS::kSuccess;
 }
 
-MStatus uninitializePlugin( MObject obj)
-
-{
+/**
+ * ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®è§£æ”¾
+ **/
+MStatus uninitializePlugin(MObject obj){
+	
 	MFnPlugin plugin( obj );
 
 	CHECK_MSTATUS (plugin.deregisterNode( CookTorranceNode::id ));
