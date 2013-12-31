@@ -25,12 +25,12 @@ class CookTorranceNode : public MPxNode
  public:
                       CookTorranceNode();
     virtual           ~CookTorranceNode();
-	virtual MStatus   compute( const MPlug& plug, MDataBlock& data );
-	virtual void      postConstructor();
+    virtual MStatus   compute( const MPlug& plug, MDataBlock& data );
+    virtual void      postConstructor();
 
-	static float beckMann( MFloatVector HV,  MFloatVector N, float m);
-	static float localOcclusion( MFloatVector HV,  MFloatVector N,  MFloatVector V,  MFloatVector L);
-	static float Fresnel( MFloatVector HV,  MFloatVector V, float n);
+    static float beckMann( MFloatVector HV,  MFloatVector N, float m);
+    static float localOcclusion( MFloatVector HV,  MFloatVector N,  MFloatVector V,  MFloatVector L);
+    static float Fresnel( MFloatVector HV,  MFloatVector V, float n);
 
     static void *     creator();
     static MStatus    initialize();
@@ -38,43 +38,43 @@ class CookTorranceNode : public MPxNode
 	
 private:
 
-	static MObject aColor;//“ü—Í‚ÌF(ƒ‰ƒCƒg‚©‚ç‚ÌŒõ)
+    static MObject aColor;//ï¿½ï¿½ï¿½Í‚ÌF(ï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ÌŒï¿½)
 
-	//ˆê”Êƒpƒ‰ƒ[ƒ^
+    //ï¿½ï¿½ï¿½Êƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
     static MObject aTranslucenceCoeff;
     static MObject aDiffuseReflectivity;
-	static MObject aIncandescence;
+    static MObject aIncandescence;
 
 	
-	static MObject aOutColor;//o—Í‚ÌF
+    static MObject aOutColor;//ï¿½oï¿½Í‚ÌF
 
-	//Shading—pƒpƒ‰ƒ[ƒ^
-	static MObject aPointCamera;
-	static MObject aNormalCamera;
+    //Shadingï¿½pï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
+    static MObject aPointCamera;
+    static MObject aNormalCamera;
 	
-	//ƒ‰ƒCƒgƒf[ƒ^
-	static MObject aLightDirection;
-	static MObject aLightIntensity;
-	static MObject aLightData;
+    //ï¿½ï¿½ï¿½Cï¿½gï¿½fï¿½[ï¿½^
+    static MObject aLightDirection;
+    static MObject aLightIntensity;
+    static MObject aLightData;
     
-	//Specular—pƒpƒ‰ƒ[ƒ^
-	static MObject aSpecularity;//‹­“x
-	static MObject aRefractivityRed;//‹üÜ—¦Red
-	static MObject aRefractivityGreen;//‹üÜ—¦Green
-	static MObject aRefractivityBlue;//‹üÜ—¦Blue
-	static MObject aRoughness;//–Ê‚Ì‘e‚³
+    //Specularï¿½pï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
+    static MObject aSpecularity;//ï¿½ï¿½ï¿½x
+    static MObject aRefractivityRed;//ï¿½ï¿½ï¿½Ü—ï¿½Red
+    static MObject aRefractivityGreen;//ï¿½ï¿½ï¿½Ü—ï¿½Green
+    static MObject aRefractivityBlue;//ï¿½ï¿½ï¿½Ü—ï¿½Blue
+    static MObject aRoughness;//ï¿½Ê‚Ì‘eï¿½ï¿½
     
     
-	static MObject aLightAmbient;
+    static MObject aLightAmbient;
     static MObject aLightDiffuse;
     static MObject aLightSpecular;
     
-	static MObject aLightShadowFraction;
+    static MObject aLightShadowFraction;
     static MObject aPreShadowIntensity;
     static MObject aLightBlindData;
     
 
-	//RayTrace—pƒpƒ‰ƒ[ƒ^
+    //RayTraceï¿½pï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
     static MObject aRayOrigin;
     static MObject aRayDirection;
 
@@ -82,9 +82,7 @@ private:
     static MObject aRaySampler;
     static MObject aRayDepth;
     static MObject aReflectGain;
-	static MObject aTriangleNormalCamera;
-
-
+    static MObject aTriangleNormalCamera;
 
 };
 
