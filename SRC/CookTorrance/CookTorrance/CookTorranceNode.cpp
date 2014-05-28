@@ -1,58 +1,58 @@
-
+ï»¿
 
 #include "CookTorranceNode.h"
 
 
-MTypeId CookTorranceNode::id( 0x7ffe );//—Bˆê‚ÌID0x81002
+MTypeId CookTorranceNode::id( 0x7ffe );//å”¯ä¸€ã®ID0x81002
 
-//ˆê”Êƒpƒ‰ƒ[ƒ^
+//ä¸€èˆ¬ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 MObject CookTorranceNode::aColor;
 MObject CookTorranceNode::aTranslucenceCoeff;
 MObject CookTorranceNode::aIncandescence;
 
-//o—Í‚·‚éF
+//å‡ºåŠ›ã™ã‚‹è‰²
 MObject CookTorranceNode::aOutColor;
 
-//Diffuse‹­“x
+//Diffuseå¼·åº¦
 MObject CookTorranceNode::aDiffuseReflectivity;
 
-//specularƒpƒ‰ƒ[ƒ^
-MObject CookTorranceNode::aSpecularity;//‹­“x
-MObject CookTorranceNode::aRefractivityRed;//‹üÜ—¦Red
-MObject CookTorranceNode::aRefractivityGreen;//‹üÜ—¦Green
-MObject CookTorranceNode::aRefractivityBlue;//‹üÜ—¦Blue
-MObject CookTorranceNode::aRoughness;//–Ê‚Ì‘e‚³
+//specularãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+MObject CookTorranceNode::aSpecularity;//å¼·åº¦
+MObject CookTorranceNode::aRefractivityRed;//å±ˆæŠ˜ç‡Red
+MObject CookTorranceNode::aRefractivityGreen;//å±ˆæŠ˜ç‡Green
+MObject CookTorranceNode::aRefractivityBlue;//å±ˆæŠ˜ç‡Blue
+MObject CookTorranceNode::aRoughness;//é¢ã®ç²—ã•
 
-//Shading—pƒpƒ‰ƒ[ƒ^
+//Shadingç”¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 MObject CookTorranceNode::aPointCamera;
 MObject CookTorranceNode::aNormalCamera;
 
-//ƒ‰ƒCƒgƒf[ƒ^
+//ãƒ©ã‚¤ãƒˆãƒ‡ãƒ¼ã‚¿
 MObject CookTorranceNode::aLightData;
 MObject CookTorranceNode::aLightDirection;
 MObject CookTorranceNode::aLightIntensity;
 
-//ƒ‰ƒCƒeƒBƒ“ƒOƒtƒ‰ƒO
+//ãƒ©ã‚¤ãƒ†ã‚£ãƒ³ã‚°ãƒ•ãƒ©ã‚°
 MObject CookTorranceNode::aLightAmbient;
 MObject CookTorranceNode::aLightDiffuse;
 MObject CookTorranceNode::aLightSpecular;
 
-//Shadowƒf[ƒ^
+//Shadowãƒ‡ãƒ¼ã‚¿
 MObject CookTorranceNode::aLightShadowFraction;
 MObject CookTorranceNode::aPreShadowIntensity;
 MObject CookTorranceNode::aLightBlindData;
 
-//RayTrace—pƒpƒ‰ƒ[ƒ^
+//RayTraceç”¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 MObject CookTorranceNode::aRayOrigin;
 MObject CookTorranceNode::aRayDirection;
 MObject CookTorranceNode::aObjectId;
 MObject CookTorranceNode::aRaySampler;
 MObject CookTorranceNode::aRayDepth;
 
-//RayTrace‹­“x
+//RayTraceå¼·åº¦
 MObject CookTorranceNode::aReflectGain;
 
-//Œğ·”»’è—p–Ê–@ü
+//äº¤å·®åˆ¤å®šç”¨é¢æ³•ç·š
 MObject CookTorranceNode::aTriangleNormalCamera;
 
 
@@ -63,27 +63,27 @@ void CookTorranceNode::postConstructor( )
 	setMPSafe(true);
 }
 
-//ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 CookTorranceNode::CookTorranceNode() {}
-//ƒfƒXƒgƒ‰ƒNƒ^
+//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 CookTorranceNode::~CookTorranceNode() {}
 
-//ƒNƒŠƒG[ƒ^
+//ã‚¯ãƒªã‚¨ãƒ¼ã‚¿
 void* CookTorranceNode::creator()
 {
 	return new CookTorranceNode();
 }
 
 
-//ƒAƒgƒŠƒrƒ…[ƒgİ’è—pƒ}ƒNƒ
-//Input—p
+//ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆè¨­å®šç”¨ãƒã‚¯ãƒ­
+//Inputç”¨
 #define MAKE_INPUT(attr)	\
 	CHECK_MSTATUS(attr.setKeyable(true));	\
 	CHECK_MSTATUS(attr.setStorable(true));	\
 	CHECK_MSTATUS(attr.setReadable(true));	\
 	CHECK_MSTATUS(attr.setWritable(true));
 
-//Output—p
+//Outputç”¨
 #define MAKE_OUTPUT(attr)	\
 	CHECK_MSTATUS(attr.setKeyable(false));	\
 	CHECK_MSTATUS(attr.setStorable(false));	\
@@ -119,21 +119,21 @@ MStatus CookTorranceNode::initialize()
     CHECK_MSTATUS ( nAttr.setDefault(1.0f, 1.0f, 1.0f) );
     CHECK_MSTATUS ( nAttr.setHidden(true) );
 
-	//ˆÈ‰ºAspecularƒpƒ‰ƒ[ƒ^‚ÌƒAƒgƒŠƒrƒ…[ƒgİ’è
+	//ä»¥ä¸‹ã€specularãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆè¨­å®š
     aSpecularity = nAttr.create( "specularity", "spc", MFnNumericData::kFloat);
     MAKE_INPUT(nAttr);
     CHECK_MSTATUS ( nAttr.setMin(0.0f) );
     CHECK_MSTATUS ( nAttr.setMax(1.0f) ) ;
     CHECK_MSTATUS ( nAttr.setDefault(0.5f) );
 
-	//–Ê‚Ì‘e‚³
+	//é¢ã®ç²—ã•
 	aRoughness = nAttr.create( "roughness", "m", MFnNumericData::kFloat);
     MAKE_INPUT(nAttr);
     CHECK_MSTATUS ( nAttr.setMin(0.0f) );
     CHECK_MSTATUS ( nAttr.setMax(1.0f) );
     CHECK_MSTATUS ( nAttr.setDefault(0.5f) );
 
-	//ˆÈ‰ºARGB‹üÜ—¦
+	//ä»¥ä¸‹ã€RGBå±ˆæŠ˜ç‡
 	//Red
 	aRefractivityRed = nAttr.create( "refractivityR", "rred", MFnNumericData::kFloat);
     MAKE_INPUT(nAttr);
@@ -155,7 +155,7 @@ MStatus CookTorranceNode::initialize()
     CHECK_MSTATUS ( nAttr.setMax(10.0f) );
     CHECK_MSTATUS ( nAttr.setDefault(1.0f) );
 
-	//RayTrace‹­“x
+	//RayTraceå¼·åº¦
     aReflectGain = nAttr.create( "reflectionGain", "rg", MFnNumericData::kFloat);
     MAKE_INPUT(nAttr);
     CHECK_MSTATUS ( nAttr.setMin(0.0f) );
@@ -337,151 +337,151 @@ MStatus CookTorranceNode::initialize()
 	
 }
 
-//‚±‚Ìƒm[ƒh‚Ìˆ—
+//ã“ã®ãƒãƒ¼ãƒ‰ã®å‡¦ç†
 MStatus CookTorranceNode::compute( const MPlug& plug, MDataBlock& block )
 {
-	//—áŠOˆ—
+	//ä¾‹å¤–å‡¦ç†
 	if ((plug != aOutColor) && (plug.parent() != aOutColor)){
                 return MS::kUnknownParameter;
 	}
 
-	//o—ÍƒJƒ‰[‚ğ•Û‚·‚é•Ï”
+	//å‡ºåŠ›ã‚«ãƒ©ãƒ¼ã‚’ä¿æŒã™ã‚‹å¤‰æ•°
     MFloatVector resultColor(0.0,0.0,0.0);
 
-    // get sample surface shading parameters(‹üƒxƒNƒgƒ‹‚Æ–@üƒxƒNƒgƒ‹‚ğæ“¾)
+    // get sample surface shading parameters(è¦–ç·šãƒ™ã‚¯ãƒˆãƒ«ã¨æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«ã‚’å–å¾—)
     MFloatVector& surfaceNormal = block.inputValue( aNormalCamera ).asFloatVector();
     MFloatVector& cameraPosition = block.inputValue( aPointCamera ).asFloatVector();
 
-        // use for raytracing api enhancement below(RayTrace—p‚Ìƒpƒ‰ƒ[ƒ^‚ğæ“¾)
+        // use for raytracing api enhancement below(RayTraceç”¨ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—)
         MFloatVector point = cameraPosition;
         MFloatVector normal = surfaceNormal;
 
-		//‹üE–@üƒxƒNƒgƒ‹‚ğ³‹K‰»
+		//è¦–ç·šãƒ»æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«ã‚’æ­£è¦åŒ–
 		CHECK_MSTATUS( cameraPosition.normalize() );
 		CHECK_MSTATUS( surfaceNormal.normalize() );
 
-	//Diffuse—pƒpƒ‰ƒ[ƒ^‚ğæ“¾
+	//Diffuseç”¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—
     MFloatVector& surfaceColor  = block.inputValue( aColor ).asFloatVector();
     MFloatVector& incandescence = block.inputValue( aIncandescence ).asFloatVector();
     float diffuseReflectivity = block.inputValue( aDiffuseReflectivity ).asFloat();
     // float translucenceCoeff   = block.inputValue( aTranslucenceCoeff ).asFloat();
 
 
-        // User-defined Reflection Color Gain(RayTrace—p‚Ì”½Ë‹­“x)
+        // User-defined Reflection Color Gain(RayTraceç”¨ã®åå°„å¼·åº¦)
         float reflectGain = block.inputValue( aReflectGain ).asFloat();
   
-    //CookTorrance shading attributes(specular—pƒpƒ‰[ƒ[ƒ^‚Ìæ“¾)
-		float spec = block.inputValue( aSpecularity ).asFloat();//‹­“x
-		float roughness = block.inputValue( aRoughness ).asFloat();//–Ê‚Ì‘e‚³
-		float refractivityR = block.inputValue( aRefractivityRed ).asFloat();//R‹üÜ—¦
-		float refractivityG = block.inputValue( aRefractivityGreen ).asFloat();//G‹üÜ—¦
-		float refractivityB = block.inputValue( aRefractivityBlue ).asFloat();//B‹üÜ—¦
+    //CookTorrance shading attributes(specularç”¨ãƒ‘ãƒ©ãƒ¼ãƒ¡ãƒ¼ã‚¿ã®å–å¾—)
+		float spec = block.inputValue( aSpecularity ).asFloat();//å¼·åº¦
+		float roughness = block.inputValue( aRoughness ).asFloat();//é¢ã®ç²—ã•
+		float refractivityR = block.inputValue( aRefractivityRed ).asFloat();//Rå±ˆæŠ˜ç‡
+		float refractivityG = block.inputValue( aRefractivityGreen ).asFloat();//Gå±ˆæŠ˜ç‡
+		float refractivityB = block.inputValue( aRefractivityBlue ).asFloat();//Bå±ˆæŠ˜ç‡
 
     
 
-	//RGB‚²‚Æ‚Ìspecular,diffuse‚Ì’l‚ğŠi”[‚·‚é•Ï”‚ğ‘S‚Ä0.0‚Å‰Šú‰»
+	//RGBã”ã¨ã®specular,diffuseã®å€¤ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°ã‚’å…¨ã¦0.0ã§åˆæœŸåŒ–
     float specularR, specularG, specularB;
     float diffuseR, diffuseG, diffuseB;
     diffuseR = diffuseG = diffuseB = specularR = specularG = specularB = 0.0;
 
-    // get light list(ƒ‰ƒCƒgî•ñ‚ğæ“¾)
+    // get light list(ãƒ©ã‚¤ãƒˆæƒ…å ±ã‚’å–å¾—)
     MArrayDataHandle lightData = block.inputArrayValue( aLightData );
     int numLights = lightData.elementCount();
     
-    // iterate through light list and get ambient/diffuse values(ƒ‰ƒCƒg‚Ì”‚¾‚¯ƒ‹[ƒv‚µ‚ÄAambient‚Ædiffuse‚ğæ“¾)
+    // iterate through light list and get ambient/diffuse values(ãƒ©ã‚¤ãƒˆã®æ•°ã ã‘ãƒ«ãƒ¼ãƒ—ã—ã¦ã€ambientã¨diffuseã‚’å–å¾—)
     for( int count=1; count <= numLights; count++ )
     {
 		
-        MDataHandle currentLight = lightData.inputValue();//Œ»İ‚Ìƒ‰ƒCƒg
-        MFloatVector& lightIntensity = currentLight.child(aLightIntensity).asFloatVector();//ƒ‰ƒCƒg‚Ì‹­‚³
+        MDataHandle currentLight = lightData.inputValue();//ç¾åœ¨ã®ãƒ©ã‚¤ãƒˆ
+        MFloatVector& lightIntensity = currentLight.child(aLightIntensity).asFloatVector();//ãƒ©ã‚¤ãƒˆã®å¼·ã•
         
-        // Find the blind data(Õ•Áî•ñ‚ğæ“¾)
+        // Find the blind data(é®è”½æƒ…å ±ã‚’å–å¾—)
         void*& blindData = currentLight.child( aLightBlindData ).asAddr();
      
-		//ƒ‰ƒCƒgƒxƒNƒgƒ‹‚ğŠi”[
+		//ãƒ©ã‚¤ãƒˆãƒ™ã‚¯ãƒˆãƒ«ã‚’æ ¼ç´
         MFloatVector& lightDirection = currentLight.child(aLightDirection).asFloatVector();
 
-		//ƒ‰ƒCƒg‚ÌŒ¸Š‚ğ•\‚·•Ï”
+		//ãƒ©ã‚¤ãƒˆã®æ¸›è¡°ã‚’è¡¨ã™å¤‰æ•°
 		float lightAttenuation = 1.0;       
 
-		//ƒ‰ƒCƒgƒxƒNƒgƒ‹‚Æ–@üƒxƒNƒgƒ‹‚Ì“àÏ
+		//ãƒ©ã‚¤ãƒˆãƒ™ã‚¯ãƒˆãƒ«ã¨æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«ã®å†…ç©
 		float cosln = lightDirection * surfaceNormal;
 
-		//ŒvZ—p‚Éƒ‰ƒCƒgƒxƒNƒgƒ‹‚ğŠi”[‚·‚é•Ï”
+		//è¨ˆç®—ç”¨ã«ãƒ©ã‚¤ãƒˆãƒ™ã‚¯ãƒˆãƒ«ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
 		MFloatVector specLightDirection;
 
-		//‹üƒxƒNƒgƒ‹‚Ì³‹K‰»
+		//è¦–ç·šãƒ™ã‚¯ãƒˆãƒ«ã®æ­£è¦åŒ–
         CHECK_MSTATUS( cameraPosition.normalize() );
 
-				//ƒÎ‚ğ’è‹`
+				//Ï€ã‚’å®šç¾©
 				float PI = (float)3.14159265;
 
 
-		if (blindData == NULL){//blindData‚ª‚È‚¢ê‡(—áŠOˆ—)
+		if (blindData == NULL){//blindDataãŒãªã„å ´åˆ(ä¾‹å¤–å‡¦ç†)
 
 			specLightDirection = lightDirection;
 
-		}else{//blindData‚ª‚ ‚éê‡
+		}else{//blindDataãŒã‚ã‚‹å ´åˆ
 
-			//ƒ‰ƒCƒg‚Æ–@ü‚Ì“àÏ
+			//ãƒ©ã‚¤ãƒˆã¨æ³•ç·šã®å†…ç©
 			cosln = MRenderUtil::diffuseReflectance( blindData, lightDirection, point, surfaceNormal, true );
 			specLightDirection =  MRenderUtil::maximumSpecularReflection( blindData,lightDirection, point, surfaceNormal, cameraPosition );
 
-			 //ƒ‰ƒCƒg‚ÌŒ¸Š
+			 //ãƒ©ã‚¤ãƒˆã®æ¸›è¡°
 			 lightAttenuation = MRenderUtil::lightAttenuation( blindData, point, surfaceNormal, false );   
 
 		}
 
-		 //ambientˆ—
-        if( currentLight.child(aLightAmbient).asBool() ) {//ƒ‰ƒCƒg‚Éambient‚ªİ’è‚³‚ê‚Ä‚¢‚ê‚Î‘S‘Ì‚Éƒ‰ƒCƒg‚Ì‹­“x‚ğ‰ÁZ
+		 //ambientå‡¦ç†
+        if( currentLight.child(aLightAmbient).asBool() ) {//ãƒ©ã‚¤ãƒˆã«ambientãŒè¨­å®šã•ã‚Œã¦ã„ã‚Œã°å…¨ä½“ã«ãƒ©ã‚¤ãƒˆã®å¼·åº¦ã‚’åŠ ç®—
             diffuseR += lightIntensity[0];
             diffuseG += lightIntensity[1];
             diffuseB += lightIntensity[2];
         }
 
-		//‚±‚±‚©‚ç”½ËŒvZ
-		if(cosln > 0.0f){//ŒõŒ¹‚Æ–Ê‚µ‚Ä‚¢‚éê‡‚Ì‚İŒvZ
+		//ã“ã“ã‹ã‚‰åå°„è¨ˆç®—
+		if(cosln > 0.0f){//å…‰æºã¨é¢ã—ã¦ã„ã‚‹å ´åˆã®ã¿è¨ˆç®—
 
-			//Diffuse”½ËŒvZ
-			if(currentLight.child(aLightDiffuse).asBool() ){//ƒ‰ƒCƒg‚Édiffuse‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡
+			//Diffuseåå°„è¨ˆç®—
+			if(currentLight.child(aLightDiffuse).asBool() ){//ãƒ©ã‚¤ãƒˆã«diffuseãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
 
-				//DiffuseŒvZ‚¨‚æ‚Ñ‰ÁZ(ƒ‰ƒCƒg‚ÌŒ¸Š‚ğ‚©‚¯AƒÎ‚ÅŠ„‚é)
+				//Diffuseè¨ˆç®—ãŠã‚ˆã³åŠ ç®—(ãƒ©ã‚¤ãƒˆã®æ¸›è¡°ã‚’ã‹ã‘ã€Ï€ã§å‰²ã‚‹)
 				diffuseR += lightIntensity[0] * ( cosln * diffuseReflectivity ) * lightAttenuation / PI;
 				diffuseG += lightIntensity[1] * ( cosln * diffuseReflectivity ) * lightAttenuation / PI;
 				diffuseB += lightIntensity[2] * ( cosln * diffuseReflectivity ) * lightAttenuation / PI;
 		}
 
-			//specular”½ËŒvZ
-			if ( currentLight.child(aLightSpecular).asBool() ){//ƒ‰ƒCƒg‚Éspecular‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡
+			//specularåå°„è¨ˆç®—
+			if ( currentLight.child(aLightSpecular).asBool() ){//ãƒ©ã‚¤ãƒˆã«specularãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
 
-									//ŠeíƒxƒNƒgƒ‹‚Ì³‹K‰»
+									//å„ç¨®ãƒ™ã‚¯ãƒˆãƒ«ã®æ­£è¦åŒ–
 									CHECK_MSTATUS( cameraPosition.normalize() );
 									CHECK_MSTATUS( specLightDirection.normalize() );
 									CHECK_MSTATUS( surfaceNormal.normalize() );
 
 
-									//ŒõŒ¹ƒxƒNƒgƒ‹‚Æ‹üƒxƒNƒgƒ‹‚Ìƒn[ƒtƒxƒNƒgƒ‹
+									//å…‰æºãƒ™ã‚¯ãƒˆãƒ«ã¨è¦–ç·šãƒ™ã‚¯ãƒˆãƒ«ã®ãƒãƒ¼ãƒ•ãƒ™ã‚¯ãƒˆãƒ«
 									MFloatVector HV = specLightDirection - cameraPosition;
 									 CHECK_MSTATUS( HV.normalize() );
 
-									 //–@üƒxƒNƒgƒ‹‚Æ‹üƒxƒNƒgƒ‹‚Ì“àÏ
+									 //æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«ã¨è¦–ç·šãƒ™ã‚¯ãƒˆãƒ«ã®å†…ç©
 									 float NV = (surfaceNormal) * (-cameraPosition);
 
-									 //”÷¬Ø•Ğ‚ğ•\‚·U—ŠÖ”D(BeckMann•ª•z)
+									 //å¾®å°åˆ‡ç‰‡ã‚’è¡¨ã™æ•£ä¹±é–¢æ•°D(BeckMannåˆ†å¸ƒ)
 									 float D = beckMann(HV, surfaceNormal, roughness);
 
-									 //localOcclusion G(Šô‰½Œ¸Š)
+									 //localOcclusion G(å¹¾ä½•æ¸›è¡°)
 									 float G = localOcclusion(HV, surfaceNormal, -cameraPosition, specLightDirection);
 
-									 //Fresnel”½Ë(RGB‚²‚Æ)
+									 //Fresnelåå°„(RGBã”ã¨)
 									 float FR = Fresnel(HV, -cameraPosition, refractivityR) / PI;
 									 float FG = Fresnel(HV, -cameraPosition, refractivityG) / PI;
 									 float FB = Fresnel(HV, -cameraPosition, refractivityB) / PI;
 
-									 //”½Ë‹­“xŒvZ(CookTorrance‚©‚çF‚¾‚¯”²‚¢‚Ä‚ ‚é)
+									 //åå°„å¼·åº¦è¨ˆç®—(CookTorranceã‹ã‚‰Fã ã‘æŠœã„ã¦ã‚ã‚‹)
 									 float s = (D * G / NV) * spec;
 
-									 //specular’l‚Ì‰ÁZ
+									 //specularå€¤ã®åŠ ç®—
 									specularR += lightIntensity[0] * s * FR * lightAttenuation; 
                                     specularG += lightIntensity[1] * s * FG * lightAttenuation; 
                                     specularB += lightIntensity[2] * s * FB * lightAttenuation; 
@@ -493,27 +493,27 @@ MStatus CookTorranceNode::compute( const MPlug& plug, MDataBlock& block )
        if( !lightData.next() ) break;
     }
 
-    // factor incident light with surface color and add incandescence©ŒÈ”­Œõ’l‚à‘«‚µ‡‚í‚¹‚ÄŒ‹‰Ê‚ÉŠi”[
+    // factor incident light with surface color and add incandescenceè‡ªå·±ç™ºå…‰å€¤ã‚‚è¶³ã—åˆã‚ã›ã¦çµæœã«æ ¼ç´
 		resultColor[0] = ( diffuseR * surfaceColor[0] ) + specularR + incandescence[0];
 		resultColor[1] = ( diffuseG * surfaceColor[1] ) + specularG + incandescence[1];
 		resultColor[2] = ( diffuseB * surfaceColor[2] ) + specularB + incandescence[2];
 
 
         // add the reflection color
-        if (reflectGain > 0.0) {//RayTrace—pˆ—(reflectGain‚ª0ˆÈã‚¾‚Á‚½ê‡)
+        if (reflectGain > 0.0) {//RayTraceç”¨å‡¦ç†(reflectGainãŒ0ä»¥ä¸Šã ã£ãŸå ´åˆ)
 
                 MStatus status;
 
-				//RayTrace‚Ég‚¤Šeí’l‚ğData block‚©‚çæ“¾‚·‚é
+				//RayTraceã«ä½¿ã†å„ç¨®å€¤ã‚’Data blockã‹ã‚‰å–å¾—ã™ã‚‹
 
                 // required attributes for using raytracer
                 // origin, direction, sampler, depth, and object id.
                
-				//•`‰æ“_‚ÌˆÊ’uƒxƒNƒgƒ‹‚ğæ“¾
+				//æç”»ç‚¹ã®ä½ç½®ãƒ™ã‚¯ãƒˆãƒ«ã‚’å–å¾—
                 MDataHandle originH = block.inputValue( aRayOrigin, &status);
                 MFloatVector origin = originH.asFloatVector();
 
-				//‹üƒxƒNƒgƒ‹‚ğæ“¾
+				//è¦–ç·šãƒ™ã‚¯ãƒˆãƒ«ã‚’å–å¾—
                 MDataHandle directionH = block.inputValue( aRayDirection, &status);
                 MFloatVector direction = directionH.asFloatVector();
 
@@ -521,19 +521,19 @@ MStatus CookTorranceNode::compute( const MPlug& plug, MDataBlock& block )
                 MDataHandle samplerH = block.inputValue( aRaySampler, &status);
                 void*& samplerPtr = samplerH.asAddr();
 
-				//ƒŒƒC‚Ì[‚³‚ğæ“¾
+				//ãƒ¬ã‚¤ã®æ·±ã•ã‚’å–å¾—
                 MDataHandle depthH = block.inputValue( aRayDepth, &status);
                 short depth = depthH.asShort();
 
-				//ƒIƒuƒWƒFƒNƒg‚ÌID‚ğæ“¾
+				//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®IDã‚’å–å¾—
                 MDataHandle objH = block.inputValue( aObjectId, &status);
                 void*& objId = objH.asAddr();
 
-                MFloatVector reflectColor;//‹¾–Ê”½Ë‚ÌF‚ğŠi”[‚·‚é•Ï”
+                MFloatVector reflectColor;//é¡é¢åå°„ã®è‰²ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
                 MFloatVector reflectTransparency;
 
 
-				//OŠpŒ`‚Ì–@ü‚ğæ“¾
+				//ä¸‰è§’å½¢ã®æ³•ç·šã‚’å–å¾—
                 MFloatVector& triangleNormal = block.inputValue( aTriangleNormalCamera ).asFloatVector();
 
 
@@ -541,7 +541,7 @@ MStatus CookTorranceNode::compute( const MPlug& plug, MDataBlock& block )
                 MFloatVector l = -direction;
                 float dot = l * normal;
                 if( dot < 0.0 ) dot = -dot;
-                MFloatVector refVector = 2 * normal * dot - l;  // reflection ray”½ËƒxƒNƒgƒ‹‚ğ‹‚ß‚é
+                MFloatVector refVector = 2 * normal * dot - l;  // reflection rayåå°„ãƒ™ã‚¯ãƒˆãƒ«ã‚’æ±‚ã‚ã‚‹
                 float dotRef = refVector * triangleNormal;
                 if( dotRef < 0.0 ) {
                     const float s = 0.01f;
@@ -550,23 +550,23 @@ MStatus CookTorranceNode::compute( const MPlug& plug, MDataBlock& block )
                         refVector = mVec + s * triangleNormal;
                 }
 
-				//”½ËƒxƒNƒgƒ‹‚Ì³‹K‰»
+				//åå°„ãƒ™ã‚¯ãƒˆãƒ«ã®æ­£è¦åŒ–
                 CHECK_MSTATUS ( refVector.normalize() );
 
-				//ƒŒƒCƒgƒŒ[ƒVƒ“ƒO‚ğs‚¤ŠÖ”(?)
+				//ãƒ¬ã‚¤ãƒˆãƒ¬ãƒ¼ã‚·ãƒ³ã‚°ã‚’è¡Œã†é–¢æ•°(?)
                 status = MRenderUtil::raytrace(
                                 point,          //  origin
                                 refVector,  //  direction
                                 objId,          //  object id
                                 samplerPtr, //  sampler info
-                                depth,          //  ray depthƒŒƒC‚Ì[‚³(‰ñ”H)
+                                depth,          //  ray depthãƒ¬ã‚¤ã®æ·±ã•(å›æ•°ï¼Ÿ)
                                 reflectColor,   // output color and transp
                                 reflectTransparency);
 
 
-				//‚à‚µAƒŒƒC‚Ì‘½dƒTƒ“ƒvƒŠƒ“ƒO‚ª•K—v‚È‚ç‚±‚±‚Åƒ‹[ƒv‚ğ‘‚¢‚Ä‰ÁZ‚·‚é
+				//ã‚‚ã—ã€ãƒ¬ã‚¤ã®å¤šé‡ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ãŒå¿…è¦ãªã‚‰ã“ã“ã§ãƒ«ãƒ¼ãƒ—ã‚’æ›¸ã„ã¦åŠ ç®—ã™ã‚‹
 
-                // add in the reflection color”½ËF‚ğ”½Ë—¦‚Æ‚©‚¯‚ÄŒ‹‰Ê‚É‰ÁZ
+                // add in the reflection coloråå°„è‰²ã‚’åå°„ç‡ã¨ã‹ã‘ã¦çµæœã«åŠ ç®—
                 resultColor[0] += reflectGain * (reflectColor[0]);
                 resultColor[1] += reflectGain * (reflectColor[1]);
                 resultColor[2] += reflectGain * (reflectColor[2]);
@@ -583,13 +583,13 @@ MStatus CookTorranceNode::compute( const MPlug& plug, MDataBlock& block )
 
 }
 
-//BeckMann•ª•z‚ğ•Ô‚·
+//BeckMannåˆ†å¸ƒã‚’è¿”ã™
 float CookTorranceNode::beckMann( MFloatVector HV,  MFloatVector N, float m){
 
-	//ƒn[ƒtƒxƒNƒgƒ‹‚Æ–@üƒxƒNƒgƒ‹‚Ì“àÏ
+	//ãƒãƒ¼ãƒ•ãƒ™ã‚¯ãƒˆãƒ«ã¨æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«ã®å†…ç©
 	float HN = HV * N;
 
-	//HN‚Ì“ñæ
+	//HNã®äºŒä¹—
 	float HN2 = HN * HN;
 
 	float bMann = (1 / (m*m * HN2*HN2) ) * exp(-( (1-HN2) /(m*m*HN2) ));
@@ -598,7 +598,7 @@ float CookTorranceNode::beckMann( MFloatVector HV,  MFloatVector N, float m){
 
 }
 
-//Šô‰½Œ¸Š‚ğ•Ô‚·
+//å¹¾ä½•æ¸›è¡°ã‚’è¿”ã™
 float CookTorranceNode::localOcclusion( MFloatVector HV,  MFloatVector N,  MFloatVector V,  MFloatVector L){
 
 	float HVN = HV*N;
@@ -621,18 +621,18 @@ float CookTorranceNode::localOcclusion( MFloatVector HV,  MFloatVector N,  MFloa
 
 }
 
-//FresnelŒvZ‚µ‚Ä•Ô‚·
+//Fresnelè¨ˆç®—ã—ã¦è¿”ã™
 float  CookTorranceNode::Fresnel( MFloatVector HV,  MFloatVector V, float n){
 
 
-	//–{—ˆ‚ÌƒtƒŒƒlƒ‹‚Í•ÎŒõ‚àl—¶‚·‚éBS”g‚ÆP”g‚Ì“x‡‚¢H
+	//æœ¬æ¥ã®ãƒ•ãƒ¬ãƒãƒ«ã¯åå…‰ã‚‚è€ƒæ…®ã™ã‚‹ã€‚Sæ³¢ã¨Pæ³¢ã®åº¦åˆã„ï¼Ÿ
 
-	//ƒn[ƒtƒxƒNƒgƒ‹‚Æ‹üƒxƒNƒgƒ‹‚Ì“àÏ
+	//ãƒãƒ¼ãƒ•ãƒ™ã‚¯ãƒˆãƒ«ã¨è¦–ç·šãƒ™ã‚¯ãƒˆãƒ«ã®å†…ç©
 	float c = HV * V;
 
-	//ƒtƒŒƒlƒ‹ŒvZ
+	//ãƒ•ãƒ¬ãƒãƒ«è¨ˆç®—
 	float g = (float) sqrt(c * c + n * n - 1.0);
-	//ŒvZ‚µ‚½ƒtƒŒƒlƒ‹ŒW”
+	//è¨ˆç®—ã—ãŸãƒ•ãƒ¬ãƒãƒ«ä¿‚æ•°
 	float F = (((g - c) * (g - c)) / (2 * (g + c) * (g + c))) * //
 	(1 + (((c * (g + c) - 1) * (c * (g + c) - 1)) / ((c * (g + c) + 1) * (c * (g + c) + 1))));
 

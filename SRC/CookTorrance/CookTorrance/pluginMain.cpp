@@ -1,33 +1,31 @@
+﻿
 #include "CookTorranceNode.h"
 
 #include <maya/MFnPlugin.h>
 
+MStatus initializePlugin( MObject obj )
 
-/**
- * プラグインの初期化
- **/
-MStatus initializePlugin(MObject obj){
-	
-	const MString UserClassify("shader/surface");//���̃m�[�h�̑���
-
-	MFnPlugin plugin( obj,  PLUGIN_COMPANY, "4.5", "Any");//���삷��Maya�̃o�[�W������
+{ 
+	//このノードの属性
+	const MString UserClassify("shader/surface"); 
 
 
-	//MStatus���Ԃ��֐���CHECK_MSTATUS�֐��ɓ����ăG���[���Ȃ����Ƃ��ۏ؂���
-	CHECK_MSTATUS(plugin.registerNode( "CookTorranceNode", CookTorranceNode::id,
-								CookTorranceNode::creator,
-								CookTorranceNode::initialize,
-								MPxNode::kDependNode,
-								&UserClassify ));
+	//動作するMayaのバージョン等
+	MFnPlugin plugin( obj,  PLUGIN_COMPANY, "4.5", "Any");
+
+//MStatusを返す関数をCHECK_MSTATUS関数に入れてエラーがないことを保証する
+CHECK_MSTATUS(plugin.registerNode( "CookTorranceNode", CookTorranceNode::id,
+									CookTorranceNode::creator,
+									CookTorranceNode::initialize,
+									MPxNode::kDependNode,
+									&UserClassify ));
 
 	return MS::kSuccess;
 }
 
-/**
- * プラグインの解放
- **/
-MStatus uninitializePlugin(MObject obj){
-	
+MStatus uninitializePlugin( MObject obj)
+
+{
 	MFnPlugin plugin( obj );
 
 	CHECK_MSTATUS (plugin.deregisterNode( CookTorranceNode::id ));

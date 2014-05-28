@@ -1,4 +1,4 @@
-#ifndef _CookTorranceNode
+﻿#ifndef _CookTorranceNode
 #define _CookTorranceNode
 
 #include <math.h>
@@ -25,12 +25,12 @@ class CookTorranceNode : public MPxNode
  public:
                       CookTorranceNode();
     virtual           ~CookTorranceNode();
-    virtual MStatus   compute( const MPlug& plug, MDataBlock& data );
-    virtual void      postConstructor();
+	virtual MStatus   compute( const MPlug& plug, MDataBlock& data );
+	virtual void      postConstructor();
 
-    static float beckMann( MFloatVector HV,  MFloatVector N, float m);
-    static float localOcclusion( MFloatVector HV,  MFloatVector N,  MFloatVector V,  MFloatVector L);
-    static float Fresnel( MFloatVector HV,  MFloatVector V, float n);
+	float beckMann( MFloatVector HV,  MFloatVector N, float m);
+	float localOcclusion( MFloatVector HV,  MFloatVector N,  MFloatVector V,  MFloatVector L);
+	float Fresnel( MFloatVector HV,  MFloatVector V, float n);
 
     static void *     creator();
     static MStatus    initialize();
@@ -38,43 +38,43 @@ class CookTorranceNode : public MPxNode
 	
 private:
 
-    static MObject aColor;//���͂̐F(���C�g�����̌�)
+	static MObject aColor;//入力の色(ライトからの光)
 
-    //���ʃp�����[�^
+	//一般パラメータ
     static MObject aTranslucenceCoeff;
     static MObject aDiffuseReflectivity;
-    static MObject aIncandescence;
+	static MObject aIncandescence;
 
 	
-    static MObject aOutColor;//�o�͂̐F
+	static MObject aOutColor;//出力の色
 
-    //Shading�p�p�����[�^
-    static MObject aPointCamera;
-    static MObject aNormalCamera;
+	//Shading用パラメータ
+	static MObject aPointCamera;
+	static MObject aNormalCamera;
 	
-    //���C�g�f�[�^
-    static MObject aLightDirection;
-    static MObject aLightIntensity;
-    static MObject aLightData;
+	//ライトデータ
+	static MObject aLightDirection;
+	static MObject aLightIntensity;
+	static MObject aLightData;
     
-    //Specular�p�p�����[�^
-    static MObject aSpecularity;//���x
-    static MObject aRefractivityRed;//���ܗ�Red
-    static MObject aRefractivityGreen;//���ܗ�Green
-    static MObject aRefractivityBlue;//���ܗ�Blue
-    static MObject aRoughness;//�ʂ̑e��
+	//Specular用パラメータ
+	static MObject aSpecularity;//強度
+	static MObject aRefractivityRed;//屈折率Red
+	static MObject aRefractivityGreen;//屈折率Green
+	static MObject aRefractivityBlue;//屈折率Blue
+	static MObject aRoughness;//面の粗さ
     
     
-    static MObject aLightAmbient;
+	static MObject aLightAmbient;
     static MObject aLightDiffuse;
     static MObject aLightSpecular;
     
-    static MObject aLightShadowFraction;
+	static MObject aLightShadowFraction;
     static MObject aPreShadowIntensity;
     static MObject aLightBlindData;
     
 
-    //RayTrace�p�p�����[�^
+	//RayTrace用パラメータ
     static MObject aRayOrigin;
     static MObject aRayDirection;
 
@@ -82,7 +82,8 @@ private:
     static MObject aRaySampler;
     static MObject aRayDepth;
     static MObject aReflectGain;
-    static MObject aTriangleNormalCamera;
+	static MObject aTriangleNormalCamera;
+
 
 };
 
