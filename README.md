@@ -6,3 +6,7 @@ Maya-Plugins
 
 ということで非常に非効率なコーディングとなっております。
 staticの使い方を確実に間違えている…
+
+このShaderを使うとこんな質感になります↓
+
+https://www.youtube.com/watch?v=wQ2I3Qq5EmM
